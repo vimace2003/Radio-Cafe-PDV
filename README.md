@@ -48,3 +48,21 @@ backend/
 ---
 
 © Radio Café 2026
+
+## Publicação automática (CI) → Docker Hub
+
+O repositório inclui um workflow GitHub Actions (`.github/workflows/dockerhub-publish.yml`) que constrói e publica as imagens Docker do frontend e backend para o Docker Hub quando houver push na branch `main`.
+
+Configuração necessária no repositório GitHub:
+
+- Defina o secret `DOCKERHUB_USERNAME` com seu usuário Docker Hub.
+
+- Defina o secret `DOCKERHUB_TOKEN` com um token de acesso (ou senha) do Docker Hub.
+
+As imagens serão publicadas com as tags:
+
+- `vimace2003/radio-cafe-pdv-frontend:latest` e `:<sha>`
+
+- `vimace2003/radio-cafe-pdv-backend:latest` e `: <sha>`
+
+Para mudar o namespace do Docker Hub, edite as variáveis `FRONTEND_IMAGE` e `BACKEND_IMAGE` no workflow.
